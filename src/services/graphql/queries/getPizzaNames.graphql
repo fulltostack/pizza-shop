@@ -1,0 +1,8 @@
+query pizzaSizes {
+  __type(name: "PizzaSizes") {
+    name
+    enumValues {
+      name
+    }
+  }
+}

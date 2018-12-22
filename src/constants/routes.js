@@ -1,3 +1,2 @@
-const BASE_ROUTE = '/';
-
-export default BASE_ROUTE;
+export const BASE_ROUTE = '/';
+export const EDIT_PIZZA_ROUTE = '/edit-pizza';
