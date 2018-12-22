@@ -12,7 +12,7 @@ const ToppingsWrapper = styled.div`
   margin: 20px auto;
 `;
 
-const Toppings = ({ selectedSize, onSelectTopping }) => (
+const Toppings = ({ selectedSize, onSelectTopping, selectedToppings }) => (
   <Query query={gql`${GET_PIZZA_NAMES}`} variables={{ name: selectedSize }}>
     {({ loading, error, data }) => (
       <ToppingsWrapper>
@@ -22,8 +22,10 @@ const Toppings = ({ selectedSize, onSelectTopping }) => (
           <Topping
             onSelect={onSelectTopping}
             key={topping.name}
+            name={topping.name}
+            price={topping.price}
+            selected={selectedToppings.includes(topping.name)}
             defaultSelected={defaultSelected}
-            {...topping}
           />
         ))}
       </ToppingsWrapper>
