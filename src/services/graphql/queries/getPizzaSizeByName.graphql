@@ -1,0 +1,13 @@
+query sizes($name: PizzaSizes) {
+	pizzaSizeByName(name: $name) {
+    maxToppings
+    basePrice
+    toppings {
+      defaultSelected
+      topping {
+        name
+        price
+      }
+    }
+  }
+}

@@ -9,7 +9,7 @@ import GET_PIZZA_NAMES from '../../../services/graphql/queries/getPizzaNames.gra
 import Loader from '../../../components/Loader';
 import PizzaEditForm from '../components/PizzaEditForm';
 
-import { updateFormData, resetFormData } from '../actions';
+import { updateFormData, resetFormData, updateToppings } from '../actions';
 import { getSelectedSize, getSelectedToppings } from '../selectors';
 
 class EditPizza extends React.Component {
@@ -29,6 +29,8 @@ class EditPizza extends React.Component {
                 selectedToppings={this.props.selectedToppings}
                 selectedSize={this.props.selectedSize}
                 onSelectSize={this.props.onSelectSize}
+                onSelectTopping={this.props.onSelectTopping}
+                onAddOrder={this.props.onAddOrder}
               />
             )}
           </div>
@@ -45,9 +47,8 @@ const mapStateToProps = state => createStructuredSelector({
 
 const mapDispatchToProps = dispatch => ({
   onSelectSize: size => dispatch(updateFormData('selectedSize', size)),
-  // onSelectTopping: size => {
-  //   dispatch(updateFormData('selectedSize', size))
-  // },
+  onSelectTopping: topping => dispatch(updateToppings(topping)),
+  onAddOrder: () => dispatch(resetFormData()),
 });
 
 EditPizza.propTypes = {};

@@ -3,12 +3,16 @@ import startCase from 'lodash/startCase';
 import map from 'lodash/map';
 
 import Card from '../../../components/Card';
+import Button from '../../../components/Button';
+import Toppings from './Toppings';
 
 const PizzaEditForm = ({
   pizzaSizes,
   selectedSize,
   selectedToppings,
   onSelectSize,
+  onSelectTopping,
+  onAddOrder,
 }) => (
   <Card>
     <select onChange={e => onSelectSize(e.target.value)}>
@@ -19,6 +23,16 @@ const PizzaEditForm = ({
         </option>
       ))}
     </select>
+    {selectedSize && (
+      <div>
+        <Toppings
+          selectedSize={selectedSize}
+          selectedToppings={selectedToppings}
+          onSelectTopping={onSelectTopping}
+          />
+        <Button onClick={onAddOrder}>Add Pizza</Button>
+      </div>
+    )}
   </Card>
 );
 
