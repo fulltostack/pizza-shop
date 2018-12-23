@@ -1,0 +1,7 @@
+query pizzaSizes {
+  pizzaSizes {
+    name
+    maxToppings
+    basePrice
+  }
+}

@@ -12,7 +12,8 @@ const PizzaEditForm = ({
   selectedToppings,
   onSelectSize,
   onSelectTopping,
-  onAddOrder,
+  onAddToCart,
+  maxToppings,
 }) => (
   <Card>
     <select onChange={e => onSelectSize(e.target.value)}>
@@ -28,9 +29,10 @@ const PizzaEditForm = ({
         <Toppings
           selectedSize={selectedSize}
           selectedToppings={selectedToppings}
+          disabledUnselected={maxToppings === selectedToppings.length}
           onSelectTopping={onSelectTopping}
           />
-        <Button onClick={onAddOrder}>Add Pizza</Button>
+        <Button onClick={onAddToCart}>Add Pizza</Button>
       </div>
     )}
   </Card>
