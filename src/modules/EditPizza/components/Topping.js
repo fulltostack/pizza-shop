@@ -38,11 +38,11 @@ class Topping extends Component {
     const {  name, price, onSelect, selected, disabled } = this.props;
     return (
       <Wrapper
-        selected={selected}
+        selected={selected || false}
         disabled={disabled}
         onClick={() => !disabled && onSelect()}
       >
-        <input type="checkbox" checked={selected} disabled={disabled} /> {name} - ${price}
+        <input type="checkbox" defaultChecked={selected || false} disabled={disabled} /> {name} - ${price}
       </Wrapper>
     );
   }
