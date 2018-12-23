@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Wrapper = styled.div`
   padding: 10px;
-  cursor: {({ disabled }) => disabled ? 'unset' : 'pointer'};
+  cursor: ${({ disabled }) => disabled ? 'unset' : 'pointer'};
   margin: 2px auto;
   display: flex;
   background-color: ${({ disabled }) => disabled ? 'lightgray' : '#f5f5f5'};
@@ -28,7 +28,8 @@ class Topping extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (
-      this.props.defaultSelected !== nextProps.defaultSelected && this.props.defaultSelected
+      this.props.selectedSize !== nextProps.selectedSize &&
+      this.props.defaultSelected
     ) {
       this.props.onSelect(nextProps.name);
     }
@@ -38,11 +39,16 @@ class Topping extends Component {
     const {  name, price, onSelect, selected, disabled } = this.props;
     return (
       <Wrapper
-        selected={selected || false}
+        selected={selected}
         disabled={disabled}
         onClick={() => !disabled && onSelect()}
       >
-        <input type="checkbox" defaultChecked={selected || false} disabled={disabled} /> {name} - ${price}
+        <input
+          type="checkbox"
+          defaultChecked={selected || false}
+          disabled={disabled}
+        />
+          {name} - ${price}
       </Wrapper>
     );
   }

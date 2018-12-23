@@ -31,6 +31,7 @@ const Toppings = ({ selectedSize, onSelectTopping, selectedToppings, disabledUns
               key={topping.name}
               name={topping.name}
               price={topping.price}
+              selectedSize={selectedSize}
               selected={isToppingSelected(topping, selectedToppings)}
               disabled={!isToppingSelected(topping, selectedToppings) && disabledUnselected}
               defaultSelected={defaultSelected}
