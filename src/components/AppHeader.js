@@ -1,6 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { CART_ROUTE, EDIT_PIZZA_ROUTE } from '../constants/routes'
+import { CART_ROUTE, EDIT_PIZZA_ROUTE } from '../constants/routes';
 
 import Button from './Button';
 
@@ -24,5 +25,9 @@ const AppHeader = ({ push }) => (
     <NavButton onClick={() => push(CART_ROUTE)}>Cart</NavButton>
   </AppHeaderWrapper>
 );
+
+AppHeader.propTypes = {
+  push: PropTypes.func.isRequired,
+};
 
 export default AppHeader;

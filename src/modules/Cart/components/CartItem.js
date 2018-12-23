@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import join from 'lodash/join';
 import map from 'lodash/map';
@@ -12,7 +13,7 @@ const CartItemWrapper = styled.div`
   align-items: center;
 `;
 
-const CartItems = ({ selectedToppings, orderTotal, pizzaName, removeCartItem }) => {
+const CartItem = ({ selectedToppings, orderTotal, pizzaName, removeCartItem }) => {
   const addonsLabel = join(map(selectedToppings, ({ name }) => name), ', ');
   return (
     <CartItemWrapper>
@@ -25,4 +26,11 @@ const CartItems = ({ selectedToppings, orderTotal, pizzaName, removeCartItem }) 
   );
 };
 
-export default CartItems;
+CartItem.propTypes = {
+  selectedToppings: PropTypes.array,
+  orderTotal: PropTypes.number,
+  pizzaName: PropTypes.string,
+  removeCartItem: PropTypes.func.isRequired,
+};
+
+export default CartItem;

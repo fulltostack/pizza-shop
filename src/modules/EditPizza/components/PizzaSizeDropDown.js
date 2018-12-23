@@ -16,4 +16,10 @@ const DropDown = ({ onSelectSize, pizzaSizes, selectedSize }) => (
   </Select>
 );
 
+DropDown.propTypes = {
+  onSelectSize: PropTypes.func.isRequired,
+  pizzaSizes: PropTypes.array,
+  selectedSize: PropTypes.string,
+};
+
 export default DropDown;

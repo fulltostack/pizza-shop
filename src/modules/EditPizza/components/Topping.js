@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 const Wrapper = styled.div`
@@ -53,5 +54,15 @@ class Topping extends Component {
     );
   }
 }
+
+Topping.propTypes = {
+  name: PropTypes.string,
+  price: PropTypes.number,
+  onSelect: PropTypes.func.isRequired,
+  selected: PropTypes.object,
+  disabled: PropTypes.bool,
+  defaultSelected: PropTypes.bool,
+  selectedSize: PropTypes.string,
+};
 
 export default Topping;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types'
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -15,21 +16,18 @@ const CartItemsWrapper = styled.div`
   align-items: center;
 `;
 
-const Cart = props => {
-  const { cartItems, removeCartItem, emptyCart } = props;
-  return (
-    <CartItemsWrapper>
-      <CartItems
-        items={cartItems}
-        removeCartItem={removeCartItem}
-      />
-      <Button onClick={emptyCart}>Empty Cart</Button>
-    </CartItemsWrapper>
-  );
-}
+const Cart = ({ cartItems, removeCartItem, emptyCart }) => (
+  <CartItemsWrapper>
+    <CartItems
+      items={cartItems}
+      removeCartItem={removeCartItem}
+    />
+    <Button onClick={emptyCart}>Empty Cart</Button>
+  </CartItemsWrapper>
+);
 
 const mapStateToProps = createStructuredSelector({
-  cartItems: getCartItems
+  cartItems: getCartItems,
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -37,6 +35,10 @@ const mapDispatchToProps = dispatch => ({
   removeCartItem: id => dispatch(removeCartItem(id)),
 });
 
-Cart.propTypes = {};
+Cart.propTypes = {
+  cartItems: PropTypes.array,
+  removeCartItem: PropTypes.func.isRequired,
+  emptyCart: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Cart);

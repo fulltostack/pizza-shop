@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Card from '../../../components/Card';
 import Button from '../../../components/Button';
@@ -33,5 +34,15 @@ const PizzaEditForm = ({
     )}
   </Card>
 );
+
+PizzaEditForm.propTypes = {
+  maxToppings: PropTypes.number,
+  pizzaSizes: PropTypes.array,
+  selectedSize: PropTypes.string,
+  selectedToppings: PropTypes.array,
+  onSelectSize: PropTypes.func.isRequired,
+  onSelectTopping: PropTypes.func.isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+};
 
 export default PizzaEditForm;

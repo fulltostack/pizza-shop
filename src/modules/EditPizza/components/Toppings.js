@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { Query } from 'react-apollo';
 import styled from 'styled-components';
 import gql from 'graphql-tag';
@@ -43,6 +44,11 @@ const Toppings = ({ selectedSize, onSelectTopping, selectedToppings, disabledUns
   </Query>
 );
 
-Toppings.propTypes = {};
+Toppings.propTypes = {
+  selectedSize: PropTypes.string,
+  onSelectTopping: PropTypes.func.isRequired,
+  selectedToppings: PropTypes.array,
+  disabledUnselected: PropTypes.bool,
+};
 
 export default Toppings;

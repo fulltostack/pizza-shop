@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import map from 'lodash/map';
 
 import CartItem from './CartItem';
@@ -16,4 +17,9 @@ const CartItems = ({ items, removeCartItem }) => (
   </Card>
 );
 
-export default CartItems
+CartItem.propTypes = {
+  items: PropTypes.array,
+  removeCartItem: PropTypes.func.isRequired,
+};
+
+export default CartItems;

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import uuid from 'uuid/v4';
 import { createStructuredSelector } from 'reselect';
@@ -93,6 +94,15 @@ const mapDispatchToProps = dispatch => ({
   resetFormData: () => dispatch(resetFormData()),
 });
 
-EditPizza.propTypes = {};
+EditPizza.propTypes = {
+  selectedSize: PropTypes.string,
+  selectedToppings: PropTypes.array,
+  maxToppings: PropTypes.number,
+  basePrice: PropTypes.number,
+  onSelectSize: PropTypes.func.isRequired,
+  onSelectTopping: PropTypes.func.isRequired,
+  onAddToCart: PropTypes.func.isRequired,
+  resetFormData: PropTypes.func.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditPizza);
