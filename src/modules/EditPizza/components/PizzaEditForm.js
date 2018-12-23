@@ -1,10 +1,9 @@
 import React from 'react';
-import startCase from 'lodash/startCase';
-import map from 'lodash/map';
 
 import Card from '../../../components/Card';
 import Button from '../../../components/Button';
 import Toppings from './Toppings';
+import PizzaSizeDromDown from './PizzaSizeDropDown';
 
 const PizzaEditForm = ({
   pizzaSizes,
@@ -16,15 +15,12 @@ const PizzaEditForm = ({
   maxToppings,
 }) => (
   <Card>
-    <select onChange={e => onSelectSize(e.target.value)}>
-      <option key={'select-size'} value={'undefined'}>Select a pizza size</option>
-      {map(pizzaSizes, ({ name }) => (
-        <option key={name} value={name}>
-          {startCase(name)}
-        </option>
-      ))}
-    </select>
-    {selectedSize && (
+    <PizzaSizeDromDown
+      selectedSize={selectedSize}
+      pizzaSizes={pizzaSizes}
+      onSelectSize={onSelectSize}
+    />
+    {selectedSize && selectedSize !== '-' && (
       <div>
         <Toppings
           selectedSize={selectedSize}
