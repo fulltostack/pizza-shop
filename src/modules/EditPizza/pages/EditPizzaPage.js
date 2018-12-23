@@ -6,12 +6,12 @@ import { Query } from 'react-apollo';
 import gql from 'graphql-tag';
 import GET_PIZZA_DETAILS from '../../../services/graphql/queries/getPizzaDetails.graphql';
 
-import selectedMaxToppings from '../../../utils/selectedMaxToppings'
-import isToppingAlreadySelected from '../../../utils/isToppingAlreadySelected'
 import Loader from '../../../components/Loader';
 import PizzaEditForm from '../components/PizzaEditForm';
+import calcOrderPrice from '../../../utils/calcOrderPrice';
 
 import { updateFormData, resetFormData, updateToppings } from '../actions';
+import { addItemToCart } from '../../Cart/actions'
 import { getSelectedSize, getSelectedToppings, getMaxToppings, getBasePrice } from '../selectors';
 
 class EditPizza extends React.Component {
@@ -32,6 +32,7 @@ class EditPizza extends React.Component {
       selectedToppings,
       basePrice,
       pizzaName: selectedSize,
+      orderTotal: calcOrderPrice(basePrice, selectedToppings),
     };
 
     onAddToCart(orderItem);
@@ -86,9 +87,10 @@ const mapDispatchToProps = dispatch => ({
   },
   onSelectTopping: topping => dispatch(updateToppings(topping)),
   onAddToCart: orderItem => {
-    console.log(orderItem);
+    dispatch(addItemToCart(orderItem));
     dispatch(resetFormData());
   },
+  resetFormData: () => dispatch(resetFormData()),
 });
 
 EditPizza.propTypes = {};
