@@ -11,3 +11,5 @@
 - cd into project directory
 - install npm dependencies using `npm install` or `yarn`
 - start the project using `npm start` or `yarn start`
+
+That's it, the application server will be started on http://localhost:3000/
