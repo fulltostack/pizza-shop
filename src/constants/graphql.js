@@ -1,2 +1,2 @@
 
-export const CLIENT_URL = 'http://core-graphql.dev.waldo.photos/pizza';
+export const CLIENT_URL = process.env.GRAPHQL_CLIENT_URL;
